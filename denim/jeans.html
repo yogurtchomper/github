@@ -1,22 +1,193 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web Page</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jeans — Pastel Cute Theme</title>
+
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+  :root{
+    --bg-1: #ffebff;
+    --bg-2: #e8fff6;
+    --accent-1: #ff8fb1; /* pink */
+    --accent-2: #ffd97a; /* peach */
+    --accent-3: #9be7ff; /* sky */
+    --accent-4: #cbb6ff; /* lavender */
+    --card: rgba(255,255,255,0.8);
+    --glass: rgba(255,255,255,0.6);
+    --soft-shadow: 0 8px 24px rgba(99, 100, 168, 0.12);
+    --rounded: 14px;
+    --transition: 220ms cubic-bezier(.2,.9,.3,1);
+    font-family: "Quicksand", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+
+  html,body{
+    height:100%;
+    margin:0;
+    background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
+    color:#333;
+    -webkit-font-smoothing:antialiased;
+    font-synthesis: none;
+  }
+
+  .container{
+    max-width:1100px;
+    margin:48px auto;
+    padding:24px;
+  }
+
+  /* Hero */
+  .cute-hero{
+    display:flex;
+    gap:24px;
+    align-items:center;
+    background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.45));
+    border-radius: calc(var(--rounded) * 1.2);
+    padding:32px;
+    box-shadow: var(--soft-shadow);
+    position:relative;
+    overflow:visible;
+  }
+
+  /* soft decorative blobs */
+  .cute-hero::before,
+  .cute-hero::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    filter: blur(34px);
+    opacity:0.9;
+    pointer-events:none;
+  }
+  .cute-hero::before{
+    width:220px;
+    height:220px;
+    left:-60px;
+    top:-60px;
+    background: radial-gradient(circle at 30% 30%, var(--accent-1), transparent 40%), radial-gradient(circle at 70% 70%, var(--accent-3), transparent 50%);
+    mix-blend-mode: screen;
+  }
+  .cute-hero::after{
+    width:160px;
+    height:160px;
+    right:-40px;
+    bottom:-40px;
+    background: radial-gradient(circle at 40% 40%, var(--accent-4), transparent 40%), radial-gradient(circle at 70% 70%, var(--accent-2), transparent 50%);
+    mix-blend-mode: screen;
+  }
+
+  /* Card */
+  .cute-card{
+    background: linear-gradient(180deg, var(--card), rgba(255,255,255,0.4));
+    border-radius: var(--rounded);
+    padding:18px;
+    box-shadow: var(--soft-shadow);
+    display:flex;
+    gap:16px;
+    align-items:center;
+  }
+
+  /* Buttons */
+  .btn-cute{
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-3));
+    color:white;
+    border: none;
+    padding:10px 18px;
+    border-radius: 999px;
+    box-shadow: 0 6px 18px rgba(156, 112, 235, 0.12);
+    cursor: pointer;
+    font-weight:600;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .btn-cute:hover{ transform: translateY(-4px); box-shadow: 0 12px 34px rgba(156,112,235,0.18); }
+
+  /* small icon styles + float animation */
+  .icon-wrap{
+    width:72px;
+    height:72px;
+    display:inline-grid;
+    place-items:center;
+    border-radius:14px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75));
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  }
+  .icon-sparkle svg, .icon-heart svg{
+    width:44px;
+    height:44px;
+    display:block;
+  }
+  @keyframes floaty {
+    0% { transform: translateY(0) rotate(-1deg); }
+    50% { transform: translateY(-8px) rotate(1.5deg); }
+    100% { transform: translateY(0) rotate(-1deg); }
+  }
+  .icon-float { animation: floaty 3.6s ease-in-out infinite; transform-origin: 50% 50%; }
+
+  /* small utilities */
+  .kicker{ color:var(--accent-4); font-weight:700; letter-spacing:0.6px; text-transform:uppercase; font-size:12px;}
+  .lead{ font-size:20px; font-weight:700; margin:6px 0 0 0;}
+  .sub{ color:#6a6a7a; margin-top:6px; font-size:14px;}
+  .grid-cards{ display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:16px; margin-top:20px; }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome!</h1>
-    </header>
+  <main class="container">
+    <section class="cute-hero">
+      <div style="flex:1;">
+        <div class="kicker">Welcome</div>
+        <h1 class="lead">Make everything pastel & adorable ✨</h1>
+        <p class="sub">Soft gradients, floating icons, and rounded cards for a cute, vibrant look.</p>
+        <div style="margin-top:18px;">
+          <button class="btn-cute">Get started</button>
+        </div>
+      </div>
 
-    <main>
-        <p>eat sleep poop game.</p>
-    </main>
+      <div style="width:220px;">
+        <div class="cute-card">
+          <div class="icon-wrap icon-float">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M12 20s-7-4.6-9-7.2C0.6 9.6 4 5 8.5 6.2 10 6.7 11 8 12 9.2c1-1.2 2-2.5 3.5-3 4.5-1.2 7.9 3.4 5.5 6.6C19 15.4 12 20 12 20z" fill="#FF8FB1"/>
+              <path d="M12 20s-7-4.6-9-7.2C0.6 9.6 4 5 8.5 6.2 10 6.7 11 8 12 9.2" fill="#FFD97A" opacity="0.18"/>
+            </svg>
+          </div>
+          <div style="flex:1;">
+            <div style="font-weight:700">Cute badge</div>
+            <div style="font-size:13px;color:#6b6b7a">Click to explore</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2025 My Web Page</p>
-    </footer>
+    <!-- grid of cute cards -->
+    <section class="grid-cards">
+      <div class="cute-card">
+        <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="6" fill="#9BE7FF" /></svg></div>
+        <div>
+          <div style="font-weight:700">Clouds</div>
+          <div style="font-size:13px;color:#6b6b7a">Soft, airy visuals</div>
+        </div>
+      </div>
+
+      <div class="cute-card">
+        <div class="icon-wrap icon-float"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" fill="#CBB6FF" /></svg></div>
+        <div>
+          <div style="font-weight:700">Lavender Pop</div>
+          <div style="font-size:13px;color:#6b6b7a">Playful accent colors</div>
+        </div>
+      </div>
+
+      <div class="cute-card">
+        <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3l1.8 4.5L18 9l-4.2 1.5L12 15l-1.8-4.5L6 9l4.2-1.5L12 3z" fill="#FFD97A"/></svg></div>
+        <div>
+          <div style="font-weight:700">Sparkles</div>
+          <div style="font-size:13px;color:#6b6b7a">Tiny animated accents</div>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
